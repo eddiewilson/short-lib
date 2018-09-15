@@ -1,0 +1,41 @@
+@import '~modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 16px,
+  ratio: 1.333,
+);
+.dropcap {
+  p {
+    &:first-child {
+      &:first-letter {
+        font-size: ms(5);
+        font-family: 'bebasregular', sans-serif;
+        padding: ms(-3) ms(-1) 0 0;
+        line-height: ms(5);
+        float: left;
+      }
+    }
+  }
+}
+
+blockquote {
+  p {
+    line-height: ms(3);
+  }
+}
+cite {
+  p {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      background-image: url(../../components/cite.svg);
+      background-size: 11px 17px;
+      background-repeat: no-repeat;
+      background-position-y: ms(-4);
+      width: ms(2);
+      height: ms(2);
+    }
+  }
+}
