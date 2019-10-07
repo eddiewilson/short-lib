@@ -1,6 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import Hamock from '../components/hamock.jpg'
+// import { Link } from 'gatsby'
 
 const ms = require('simple-modular-scale')
 
@@ -14,7 +13,7 @@ const scale = ms({
 class HeroImage extends React.Component {
   render() {
     const Image = this.props.imageFile.data.allImageSharp.edges[2].node
-      .responsiveResolution.src
+      .resolutions.src
 
     return (
       <div
@@ -37,8 +36,8 @@ class HeroImage extends React.Component {
         >
           <h1
             style={{
-              fontFamily: 'bebasregular, sans-serif',
-              fontSize: scale[4],
+              fontFamily: 'bebas_neuebold, sans-serif',
+              fontSize: scale[5],
               textTransform: 'uppercase',
               color: 'white',
               textShadow: '0px, 0px, 0px, 4px rgba(0, 0, 0, 0.25)',
@@ -54,11 +53,12 @@ class HeroImage extends React.Component {
               paddingTop: scale[0],
               paddingBottom: scale[0],
               textTransform: 'uppercase',
+              letterSpacing: '1px',
               backgroundColor: '#FFB628',
               outline: 'none',
               border: 'none',
-              fontFamily: 'bebasregular, sans-serif',
-              fontSize: scale[0],
+              fontFamily: 'bebas_neuebold, sans-serif',
+              fontSize: scale[1],
               color: 'white',
             }}
           >

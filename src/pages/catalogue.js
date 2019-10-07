@@ -2,40 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-
-import HeroImage from '../components/heroimage'
-import SplitText from '../components/splitText'
-import Blockquote from '../components/blockquote'
 import ProductThumb from '../components/productthumb'
 
 // const taxonomy = this.props.data.allWordpressWpGenre.edges
-const IndexPage = data => (
+const CataloguePage = data => (
   <Layout>
-    <section style={{ width: '100vw', minHeight: '100vh' }}>
-      <HeroImage imageFile={data} />
-    </section>
-    <section className="grid">
-      <SplitText
-        text={data}
-        style={{
-          paddingLeft: '8.541667%',
-          paddingRight: '8.541667%',
-        }}
-      />
-    </section>
-
-    <section className="grid">
-      <div className="col-5" data-push-left="off-4">
-        <Blockquote
-          blockquote={data}
-          cite={data}
-          style={{
-            paddingLeft: '8.541667%',
-            paddingRight: '8.541667%',
-          }}
-        />
-      </div>
-    </section>
     <section
       className="grid"
       style={{
@@ -56,10 +27,10 @@ const IndexPage = data => (
   </Layout>
 )
 
-export default IndexPage
+export default CataloguePage
 
 export const Heroquery = graphql`
-  query ImageQuery {
+  query CatalogueQuery {
     allImageSharp {
       edges {
         node {
@@ -83,6 +54,7 @@ export const Heroquery = graphql`
       edges {
         node {
           title
+          wordpress_id
           content
           featured_media {
             id

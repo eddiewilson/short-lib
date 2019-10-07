@@ -1,5 +1,8 @@
+/* eslint-disable */
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+
+import styles from './styles/productthumb.scss'
 
 const ms = require('simple-modular-scale')
 
@@ -15,7 +18,7 @@ class ProductThumb extends React.Component {
     const Product = this.props.product // .responsiveResolution.src
     const Taxonomy = this.props.taxonomy
     return (
-      <article className="col-2">
+      <article className="col-2 product-item">
         <Link
           style={{
             color: 'inherit',
@@ -23,7 +26,7 @@ class ProductThumb extends React.Component {
             display: 'flex',
             height: '100%',
           }}
-          to={Product.slug}
+          to={Product.node.slug}
         >
           <div
             style={{
@@ -38,12 +41,15 @@ class ProductThumb extends React.Component {
                 marginBottom: scale[2],
               }}
               src={Product.node.featured_media.source_url}
+              alt="Alt Text"
             />
             <h4
               style={{
                 fontFamily: 'Alegreya, serif',
                 fontSize: scale[1],
+                lineHeight: '1.33',
                 textAlign: 'center',
+                fontWeight: '700',
               }}
             >
               {Product.node.title}
@@ -52,7 +58,7 @@ class ProductThumb extends React.Component {
               style={{
                 textTransform: 'uppercase',
                 color: '#CFCFCF',
-                fontFamily: 'bebasregular, sans-serif',
+                fontFamily: 'bebas_neuebold, sans-serif',
                 fontSize: scale[0],
                 fontStyle: 'normal',
                 textAlign: 'center',

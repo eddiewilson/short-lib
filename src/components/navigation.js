@@ -1,5 +1,7 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+
+import styles from './styles/navigation.scss'
 
 const ms = require('simple-modular-scale')
 
@@ -14,23 +16,75 @@ class Navigation extends React.Component {
   render() {
     // const numbers = props.numbers
     const posts = ['Catalogue', 'Authors', 'Genres'] // this.props.data.markdownRemark
-    const listItems = posts.map(post => (
-      <li
-        className="col"
-        style={{
-          listStyle: 'none',
-          fontFamily: 'Alegreya',
-          fontSize: scale[0],
-          fontWeight: '500',
-        }}
-        key={post.toString()}
-      >
-        {post}
-      </li>
-    ))
+
+    const genreItems = this.props.items.siteTitle.allWordpressWpGenre.edges
+
+    const listItems = posts.map(post => {
+      if (post === 'Genres') {
+        return (
+          <li
+            className="col has-children"
+            style={{
+              listStyle: 'none',
+              fontFamily: 'Alegreya',
+              fontSize: scale[0],
+              fontWeight: '500',
+            }}
+            key={post.toString()}
+          >
+            <Link
+              to={post.toLowerCase()}
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+            >
+              {post}
+              <ul className="sub-menu">
+                {genreItems.map(genreItem => (
+                  <li style={styles}>
+                    <Link
+                      to={'genre/' + genreItem.node.name.toLowerCase()}
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                      }}
+                    >
+                      {genreItem.node.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Link>
+          </li>
+        )
+      }
+      return (
+        <li
+          className="col"
+          style={{
+            listStyle: 'none',
+            fontFamily: 'Alegreya',
+            fontSize: scale[0],
+            fontWeight: '500',
+          }}
+          key={post.toString()}
+        >
+          <Link
+            to={post.toLowerCase()}
+            style={{
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+          >
+            {post}
+          </Link>
+        </li>
+      )
+    })
     return (
-      <nav>
-        <ul className="grid-spaceBetween">{listItems}</ul>
+      <nav className="grid nav">
+        <ul className="grid-spaceBetween grid-noBottom">{listItems}</ul>
       </nav>
     )
   }

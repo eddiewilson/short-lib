@@ -1,14 +1,5 @@
 import React from 'react'
 
-const ms = require('simple-modular-scale')
-
-const scale = ms({
-  base: 16,
-  ratios: [1333 / 1000],
-  length: 8,
-})
-// [ 16, 24, 32, 48, 64, 96, 128, 192 ]
-
 class Blockquote extends React.Component {
   render() {
     const Blockquote =
@@ -18,27 +9,9 @@ class Blockquote extends React.Component {
 
     return (
       <div>
-        <blockquote
-          style={{
-            fontWeight: '700',
-            fontSize: scale[2],
-            fontFamily: 'Alegreya',
-            paddingTop: scale[4],
-          }}
-          dangerouslySetInnerHTML={{ __html: Blockquote }}
-        />
+        <blockquote dangerouslySetInnerHTML={{ __html: Blockquote }} />
         <cite>
-          <p
-            style={{
-              color: '#CFCFCF',
-              fontFamily: 'bebasregular, sans-serif',
-              fontSize: scale[0],
-              fontStyle: 'normal',
-              marginLeft: scale[5],
-              paddingBottom: scale[4],
-            }}
-            dangerouslySetInnerHTML={{ __html: Cite }}
-          />
+          <p dangerouslySetInnerHTML={{ __html: Cite }} />
         </cite>
       </div>
     )

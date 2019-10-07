@@ -1,0 +1,28 @@
+@import '~modularscale-sass/stylesheets/modularscale';
+
+.basket-view {
+  .table {
+    header {
+      color: #cfcfcf;
+      font-family: 'bebas_neuebold', sans-serif;
+      font-size: ms(1);
+      font-style: normal;
+      letter-spacing: 0.01rem;
+      margin-bottom: ms(3);
+    }
+    main {
+      font-family: 'Alegreya', serif;
+      font-size: ms(1);
+      line-height: ms(3);
+      .basket-image {
+        max-height: 111px;
+        max-width: 87px;
+      }
+    }
+    ul {
+      li {
+        margin-bottom: ms(2);
+      }
+    }
+  }
+}

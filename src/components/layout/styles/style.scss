@@ -1,0 +1,83 @@
+@import '~reset-css/sass/reset';
+@import '~modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 16px,
+  ratio: 1.333,
+);
+
+$orange: #ffb628;
+html {
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.dropcap {
+  p {
+    &:first-child {
+      &:first-letter {
+        font-size: ms(5);
+        font-family: 'bebas_neuebold', sans-serif;
+        padding: ms(-3) ms(-1) 0 0;
+        line-height: ms(5);
+        float: left;
+      }
+    }
+  }
+}
+p {
+  font-family: 'Alegreya', serif;
+  font-size: ms(1);
+  line-height: ms(3);
+}
+blockquote {
+  margin-bottom: ms(2);
+  p {
+    font-weight: 700;
+    font-size: ms(3);
+    line-height: ms(3);
+    font-family: 'Alegreya', serif;
+    padding-top: ms(3);
+  }
+}
+cite {
+  margin-left: ms(4);
+  padding-bottom: ms(4);
+  display: block;
+  p {
+    position: relative;
+    color: #cfcfcf;
+    font-family: 'bebas_neuebold', sans-serif;
+    font-size: ms(0);
+    font-style: normal;
+    letter-spacing: 0.01rem;
+    &:before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      background-image: url(../../cite.svg);
+      background-size: 11px 17px;
+      background-repeat: no-repeat;
+      background-position-y: ms(-2);
+      width: ms(2);
+      height: ms(2);
+    }
+  }
+}
+.button {
+  outline: none;
+  background-color: transparent;
+  box-shadow: none;
+  border: 2px solid $orange;
+  padding: ms(0) ms(1);
+  font-size: ms(1);
+  letter-spacing: 1px;
+  font-family: 'bebas_neuebold', sans-serif;
+  color: $orange;
+  min-width: 207px;
+}
+.desc {
+  margin-bottom: ms(6);
+}

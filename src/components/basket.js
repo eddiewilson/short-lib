@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 import BasketSvg from '../components/basket.svg'
 
@@ -13,10 +13,18 @@ const scale = ms({
 // [ 16, 24, 32, 48, 64, 96, 128, 192 ]
 
 class Basket extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = ['1', '2', '3']
+  }
+  addBook() {
+    console.log('Adding a book')
+  }
+
   render() {
     // const numbers = props.numbers
-    const basketItems = ['Book A', 'Book B', 'Book C'] // this.props.data.markdownRemark
-    const listItems = basketItems.map(baskteitem => (
+
+    const listItems = this.state.map(basketitem => (
       <li
         className=""
         style={{
@@ -26,9 +34,9 @@ class Basket extends React.Component {
           fontWeight: '500',
           display: 'none',
         }}
-        key={baskteitem.toString()}
+        key={basketitem.toString()}
       >
-        {baskteitem}
+        {basketitem}
       </li>
     ))
     const basketCount = (
@@ -48,41 +56,51 @@ class Basket extends React.Component {
       >
         <span
           style={{
-            marginBottom: scale[0],
+            marginBottom: '0px',
             color: 'white',
-            fontFamily: 'bebasregular, sans-serif',
+            fontFamily: 'bebas_neuebold, sans-serif',
             fontSize: scale[6],
           }}
         >
-          {basketItems.length}
+          {this.state.length}
         </span>
       </div>
     )
     return (
-      <div
-        className="basketGroup col"
+      <Link
         style={{
-          marginTop: -scale[6],
+          color: 'inherit',
+          textDecoration: 'none',
+          display: 'flex',
+          height: '100%',
         }}
+        to={'/checkout'}
       >
         <div
+          className="basketGroup col"
           style={{
-            display: 'flex',
-            flexDirection: 'row',
+            marginTop: -scale[6],
           }}
         >
-          <img
+          <div
             style={{
-              marginBottom: 0,
-              marginTop: scale[7],
+              display: 'flex',
+              flexDirection: 'row',
             }}
-            src={BasketSvg}
-            alt="basket icon"
-          />
-          {basketCount}
+          >
+            <img
+              style={{
+                marginBottom: 0,
+                marginTop: scale[7],
+              }}
+              src={BasketSvg}
+              alt="basket icon"
+            />
+            {basketCount}
+          </div>
+          <ul className="grid-spaceBetween">{listItems}</ul>
         </div>
-        <ul className="grid-spaceBetween">{listItems}</ul>
-      </div>
+      </Link>
     )
   }
 }
